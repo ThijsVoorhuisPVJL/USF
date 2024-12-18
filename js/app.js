@@ -1,4 +1,3 @@
-// JavaScript logic
 const chatHistory = [];
 let userInput = '';
 
@@ -12,7 +11,6 @@ document.getElementById('userInput').addEventListener('keydown', function(event)
   }
 });
 
-// Event listener for the Send button
 document.getElementById('sendButton').addEventListener('click', function() {
   sendMessage();
 });
@@ -20,10 +18,9 @@ document.getElementById('sendButton').addEventListener('click', function() {
 function sendMessage() {
   const userInput = document.getElementById('userInput').value;
   if (userInput.trim()) {
-    // Add user message to chat
     addMessage(userInput, true);
     processQuestion(userInput);
-    document.getElementById('userInput').value = ''; // Clear the input field
+    document.getElementById('userInput').value = '';
   }
 }
 
@@ -34,7 +31,7 @@ function addMessage(text, isUser) {
   messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
   messageDiv.innerHTML = text;
   chatBox.appendChild(messageDiv);
-  chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 function processQuestion(question) {
@@ -51,9 +48,9 @@ function processQuestion(question) {
       "<li>probleem</li>" +
       "<li>kabel</li>" +
       "<li>ander</li>" +
-      "<li>pioneer xdj-rx2</li>" +
-      "<li>allen & heath xone 96</li>" +
-      "<li>pioneer ddj 400</li>" +
+      "<li>pioneer xdj-rx2 of xdj-rx2</li>" +
+      "<li>allen & heath xone 96 of xone 96</li>" +
+      "<li>pioneer ddj 400 of ddj 400</li>" +
       "</ul>" +
       "Gebruik een van deze woorden in je vraag, en ik zal proberen te helpen!"
     );
@@ -84,7 +81,7 @@ function processQuestion(question) {
     responses.push("Heb je specifieke vragen over een bepaald model draaitafel of speaker? Ik kan je ook helpen met kabels en meer!");
   }
 
-  if (question.includes("pioneer xdj-rx2")) {
+  if (question.includes("pioneer xdj-rx2") || question.includes("xdj-rx2")) {
     responses.push("Stappenplan\n" +
       "Controleer de aansluitingen op de XDJ-RX2\n" +
       "De XDJ-RX2 heeft meerdere uitgangen:\n" +
@@ -117,6 +114,73 @@ function processQuestion(question) {
       "Speel een track af en controleer of beide speakers goed werken.\n" +
       "Pas indien nodig de EQ en volume-instellingen aan op de XDJ-RX2.");
   }
+
+  if (question.includes("allen & heath xone 96") || question.includes("xone 96")) {
+    responses.push("Stappenplan\n" +
+      "Controleer je speakers\n" +
+      "Actieve speakers: Hebben een ingebouwde versterker en kunnen direct op de Xone:96 worden aangesloten.\n" +
+      "Passieve speakers: Hebben een externe versterker nodig die tussen de Xone:96 en de speakers wordt geplaatst.\n" +
+      "Verbind de Xone:96 met je speakers\n" +
+      "Voor actieve speakers:\n" +
+      "\n" +
+      "Gebruik XLR-kabels.\n" +
+      "Sluit het ene uiteinde van de XLR-kabels aan op de Master Out 1 (links en rechts) van de Xone:96.\n" +
+      "Sluit het andere uiteinde aan op de input van de actieve speakers.\n" +
+      "Zet de volumeknoppen op de speakers laag voordat je ze inschakelt.\n" +
+      "Voor passieve speakers:\n" +
+      "\n" +
+      "Verbind de Master Out 2 (RCA) van de Xone:96 met de input van de versterker.\n" +
+      "Gebruik speakerkabels om de versterker met de passieve speakers te verbinden.\n" +
+      "Zet het volume van de versterker laag voordat je het systeem inschakelt.\n" +
+      "Voor een DJ-booth monitor:\n" +
+      "\n" +
+      "Gebruik TRS-kabels.\n" +
+      "Verbind de Booth Out (TRS) van de Xone:96 met de monitor speakers.\n" +
+      "Stel het booth-volume in met de Booth Level-knop op de Xone:96.\n" +
+      "Stroom en opstarten\n" +
+      "Sluit de Xone:96 en de speakers aan op stroom.\n" +
+      "Zet eerst de Xone:96 aan, daarna de speakers.\n" +
+      "Begin met een laag volume en pas de output aan met de Master Level en andere volumeregelaars op de Xone:96.\n" +
+      "Test het geluid\n" +
+      "Speel een track af vanaf een aangesloten apparaat (bijvoorbeeld een draaitafel of laptop).\n" +
+      "Controleer of het geluid correct uit de speakers komt.\n" +
+      "Pas indien nodig de EQ en het volume aan voor een optimale luisterervaring.");
+  }
+
+  if (question.includes("pioneer ddj 400") || question.includes("ddj 400")) {
+    responses.push("Stappen\n" +
+      "Controleer de aansluitingen op de DDJ-400\n" +
+      "De DDJ-400 heeft een RCA Master Output aan de achterkant. Deze gebruik je om de controller op speakers of een versterker aan te sluiten.\n" +
+      "Verbind de DDJ-400 met de speakers\n" +
+      "Voor actieve speakers:\n" +
+      "\n" +
+      "Gebruik een RCA-kabel.\n" +
+      "Sluit de witte en rode uiteinden van de RCA-kabel aan op de Master Output van de DDJ-400.\n" +
+      "Verbind het andere uiteinde van de kabel met de RCA-inputs op de actieve speakers.\n" +
+      "Zet het volume van de speakers laag voordat je ze inschakelt.\n" +
+      "Voor passieve speakers:\n" +
+      "\n" +
+      "Verbind de DDJ-400 met een versterker via de RCA Master Output.\n" +
+      "Gebruik speakerkabels om de versterker te verbinden met de passieve speakers.\n" +
+      "Zet zowel de versterker als de speakers op laag volume voordat je ze inschakelt.\n" +
+      "Voor desktop- of kleine speakers (met 3,5 mm aux):\n" +
+      "\n" +
+      "Gebruik een RCA-naar-3,5 mm jack-kabel.\n" +
+      "Verbind de RCA-uitgang van de DDJ-400 met de 3,5 mm aux-ingang op de speakers.\n" +
+      "Zet het volume van de speakers laag voordat je ze inschakelt.\n" +
+      "Stroom en instellingen\n" +
+      "Zorg ervoor dat zowel de DDJ-400 als de speakers zijn aangesloten op een stopcontact (indien nodig).\n" +
+      "Start je laptop of computer en open Rekordbox.\n" +
+      "Zet de DDJ-400 en de speakers aan.\n" +
+      "Geluid testen\n" +
+      "Laad een track in Rekordbox en speel deze af.\n" +
+      "Pas het volume aan via de Master Level knop op de DDJ-400.\n" +
+      "Controleer of het geluid goed uit de speakers komt en of het volume in balans is.");
+  }
+
+
+
+
 
   if (responses.length > 0) {
     responses.forEach(response => addMessage(response, false));
